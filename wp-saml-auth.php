@@ -29,7 +29,7 @@ function wpsa_filter_option( $value, $option_name ) {
 		 *
 		 * @param string
 		 */
-		'connection_type'        => 'simplesamlphp',
+		'connection_type'        => 'internal',
 		/**
 		 * Path to SimpleSAMLphp autoloader.
 		 *
