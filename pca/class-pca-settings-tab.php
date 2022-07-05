@@ -17,24 +17,23 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new WP_SAML_Auth_PCA_Settings_Tab;
-			error_log("get_instance");
 			add_action( 'init', array( self::$instance, 'action_init' ) );
-			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 		}
+
 		return self::$instance;
 	}
 
-	public static function action_init()
+	public function action_init()
 	{
-		do_action('init', [self::$instance, 'initialize_tab']);
-		do_action('init', [self::$instance, 'initialize_fields']);
-		do_action('init', [self::$instance, 'save_tab_fields']);
+		do_action('init', [$this, 'initialize_tab']);
+		do_action('init', [$this, 'initialize_fields']);
+		do_action('init', [$this, 'save_tab_fields']);
 	}
 
 	/**
 	 * Add tab to pca account settings
 	 */
-	public static function initialize_tab()
+	public function initialize_tab()
 	{
 		global $pca_settings;
 		$pca_settings->account_tabs["saml"] = __("Saml", "pca");
@@ -43,7 +42,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	/**
 	 * Add fields to tab
 	 */
-	public static function initialize_fields()
+	public function initialize_fields()
 	{
 		global $pca_settings;
 
@@ -92,7 +91,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		);
 	}
 
-	public static function save_tab_fields() {
+	public function save_tab_fields() {
 		error_log(print_r(get_option('wp_saml_auth_settings'), true));
 	}
 
