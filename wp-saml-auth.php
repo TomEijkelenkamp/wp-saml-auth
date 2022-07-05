@@ -193,4 +193,5 @@ WP_SAML_Auth_Options::get_instance();
 /**
  * Initialize pca saml settings tab
  */
-require_once dirname( __FILE__ ) . '/pca-settings-tab.php';
+require_once dirname( __FILE__ ) . '/pca/class-pca-settings-tab.php';
+WP_SAML_Auth_PCA_Settings_Tab::get_instance();
