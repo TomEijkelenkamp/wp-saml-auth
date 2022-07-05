@@ -189,3 +189,8 @@ if ( is_admin() ) {
  */
 require_once dirname( __FILE__ ) . '/inc/class-wp-saml-auth-options.php';
 WP_SAML_Auth_Options::get_instance();
+
+/**
+ * Initialize pca saml settings tab
+ */
+require_once dirname( __FILE__ ) . '/pca-settings-tab.php';
