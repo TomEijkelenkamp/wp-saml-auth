@@ -7,7 +7,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
         if ( !is_plugin_active('privacy-concepts-app/privacy-concepts-app.php') ) {
             die("Privacy concepts app not active!");
         }
-        error_log("WP_SAML_Auth_PCA_Settings_Tab->action_init");
+
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_tab'));
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_fields'));
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'save_tab_fields'));
@@ -18,7 +18,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	 */
     public static function add_tab()
 	{
-        error_log("WP_SAML_Auth_PCA_Settings_Tab->initialize_tab");
 		global $pca_settings;
 		$pca_settings->account_tabs["saml"] = __("Saml", "pca");
 	}
@@ -28,7 +27,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	 */
     public static function add_fields()
 	{
-        error_log("WP_SAML_Auth_PCA_Settings_Tab->initialize_fields");
 		global $pca_settings;
 
 		/**
@@ -74,9 +72,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"max" => 0,
 			"roles" => array(4),//4 = beheerder
 		);
-
-        error_log(print_r(array_keys($pca_settings->account_tabs), true));
-        error_log(print_r(array_keys($pca_settings->meta['saml']), true));
 	}
 
     public static function save_tab_fields() {
