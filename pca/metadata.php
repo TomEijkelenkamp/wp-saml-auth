@@ -6,10 +6,11 @@
 
 require_once('../../../wp-load.php');
 require_once 'vendor/autoload.php';
+require_once 'settings.php';
 
 try {
 	$auth = new OneLogin\Saml2\Auth();
-	$settings = $auth->getSettings();
+	$settings = $auth->getSettings($settings);
 
 	error_log(print_r($settings, true));
 
