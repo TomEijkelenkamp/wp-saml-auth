@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die("you do not have acces to this page!");
 
-if ( !is_plugin_active('privacyinsights/privacy-concepts-app.php') ) {
+if ( !is_plugin_active('privacyinsights/privacy-concepts-app.php') && !is_plugin_active('privacy-concepts-app/privacy-concepts-app.php') ) {
 	die("Privacy concepts app not active!");
 }
 
