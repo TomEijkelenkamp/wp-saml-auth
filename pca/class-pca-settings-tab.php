@@ -25,9 +25,9 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 	public function action_init()
 	{
-		do_action('init', [$this, 'initialize_tab']);
-		do_action('init', [$this, 'initialize_fields']);
-		do_action('init', [$this, 'save_tab_fields']);
+		add_action('init', [$this, 'initialize_tab']);
+		add_action('init', [$this, 'initialize_fields']);
+		add_action('init', [$this, 'save_tab_fields']);
 	}
 
 	/**
