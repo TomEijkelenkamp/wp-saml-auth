@@ -26,4 +26,7 @@ header('Content-Type: text/html');
 	<h2>Step 5.</h2>
 	<p>Name the party trust according to your avg register url, subdomain.domain.nl</p>
 	<img src="img/docu_5_name_trust.png" />
+	<h2>Step 6.</h2>
+	<p>Set access control policy to everyone</p>
+	<img src="img/docu_6_access_control.png" />
 </div>
