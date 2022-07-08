@@ -1,5 +1,7 @@
 <?php
 
+$options = get_option('wp_saml_auth_settings');
+
 $settings = array(
 	// If 'strict' is True, then the PHP Toolkit will reject unsigned
 	// or unencrypted messages if it expects them signed or encrypted
