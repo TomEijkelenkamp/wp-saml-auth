@@ -20,7 +20,8 @@ try {
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 		header('Cache-Control: private', false); // required for certain browsers
 		header('Content-Type: text/xml');
-		
+		header('Content-Disposition: attachment; filename="metadata.xml"');
+
 		echo $metadata;
 
 		exit;
