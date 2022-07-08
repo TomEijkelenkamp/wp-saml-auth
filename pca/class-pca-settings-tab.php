@@ -15,7 +15,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		add_action("get_field_edit_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
 		add_action("get_field_view_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
 
-		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth"), 10, 3);
+		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth"), 10, 4);
 	}
 
 
@@ -116,7 +116,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	/**
 	 * Get values for pca saml fields from wp_saml_auth_settings
 	 */
-    public static function get_field_value_wp_saml_auth( $fieldname, $data_item, $datatype )
+    public static function get_field_value_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
 	{
 		if ( $datatype === 'saml' ) {
 
