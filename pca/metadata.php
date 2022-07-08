@@ -9,19 +9,21 @@ require_once '../vendor/autoload.php';
 require_once 'settings.php';
 
 try {
-	error_log("SAML Metadata view");
-	error_log("SAML Metadata view: Settings 1");
-	error_log(print_r($settings, true));
 	$auth = new OneLogin\Saml2\Auth($settings);
 	$settings = $auth->getSettings();
-	error_log("SAML Metadata view: Settings 2");
-	error_log(print_r($settings, true));
 
 	$metadata = $settings->getSPMetadata();
 	$errors = $settings->validateMetadata($metadata);
 	if (empty($errors)) {
+		header('Pragma: public');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Cache-Control: private', false); // required for certain browsers
 		header('Content-Type: text/xml');
+		
 		echo $metadata;
+
+		exit;
 	} else {
 		throw new OneLogin\Saml2\Error(
 			'Invalid SP metadata: ' . implode(', ', $errors),
