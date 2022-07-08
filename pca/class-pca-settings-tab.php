@@ -84,7 +84,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 	public static function get_field_sp_metadata()
 	{
-		$url = add_query_arg(['token' => wp_create_nonce("pca-nonce")], plugin_dir_url(__FILE__ ) . '/metadata.php?token=');
+		$url = add_query_arg(['token' => wp_create_nonce("pca-nonce")], plugin_dir_url(__FILE__ ) . 'metadata.php?token=');
 
 		?>
 		<label><?php _e("metadata.xml", "pca") ?></label>
