@@ -147,8 +147,9 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		$url = add_query_arg(['token' => wp_create_nonce("pca-nonce")], plugin_dir_url(__FILE__ ) . 'metadata.php?token=');
 
 		?>
-		<label><?php _e("metadata.xml", "pca") ?></label>
+		<label><?php _e("Sp metadata", "pca") ?></label>
 		<div class="form-control-no-input">
+			<span><?php _e("metadata.xml", "pca") ?></span>
 			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>"><?php _e("Download", "pca") ?></a>
 		</div>
 		<?php
