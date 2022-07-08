@@ -36,24 +36,24 @@ header('Content-Type: text/html');
 	<p>Press close</p>
 	<img src="img/docu_8_trust_finish.png" />
 	<h2>Step 9.</h2>
-	<p>Edit </p>
+	<p>Edit Claim Issuance Policy</p>
 	<img src="img/docu_9_claim_issuance.png" />
 	<h2>Step 10.</h2>
-	<p>Press close</p>
+	<p>Set claim rule template to "Send LDAP Attributes as Claims"</p>
 	<img src="img/docu_10_add_ldap.png" />
 	<h2>Step 11.</h2>
-	<p>Press close</p>
+	<p>Setup rule as you see in the picture and press Ok</p>
 	<img src="img/docu_11_rule_email.png" />
 	<h2>Step 12.</h2>
-	<p>Press close</p>
+	<p>Add another rule and set the claim rule template to "Transform an Incoming Claim"</p>
 	<img src="img/docu_12_add_transform.png" />
 	<h2>Step 13.</h2>
-	<p>Press close</p>
+	<p>Setup rule as you see in the picture and press Ok</p>
 	<img src="img/docu_13_transform_email.png" />
 	<h2>Step 14.</h2>
-	<p>Press close</p>
+	<p>Add another rule and set claim rule template to "Send LDAP Attributes as Claims"</p>
 	<img src="img/docu_14_add_ldap.png" />
 	<h2>Step 15.</h2>
-	<p>Press close</p>
+	<p>Setup rule as you see in the picture and press Ok</p>
 	<img src="img/docu_15_rule_login.png" />
 </div>
