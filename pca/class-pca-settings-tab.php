@@ -39,6 +39,15 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		/**
 		 *  Service Provider Fields
 		 */
+		$pca_settings->meta["saml"]["documentation"] = array(
+			"label" => __("Documentation", "pca"),
+			"fieldtype" => "callback",
+			"callback" => "documentation",
+		);
+
+		/**
+		 *  Service Provider Fields
+		 */
 		$pca_settings->meta["saml"]["sp_metadata"] = array(
 			"label" => __("Sp metadata", "pca"),
 			"fieldtype" => "callback",
