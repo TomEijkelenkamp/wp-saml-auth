@@ -77,10 +77,34 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		);
 	}
 
+
     public static function save_tab_fields()
 	{
-		error_log(print_r(get_option('wp_saml_auth_settings'), true));
+		if ( isset($_POST['subtab']) && $_POST['subtab'] === "saml" ) {
+
+			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+
+			if ( isset($_POST['idp_entity_id']) ) {
+				$wp_saml_auth_settings['idp_entityId'] = esc_url($_POST['idp_entity_id']);
+			}
+
+			if ( isset($_POST['idp_single_sign_on_service_url']) ) {
+				$wp_saml_auth_settings['idp_singleSignOnService_url'] = esc_url($_POST['idp_single_sign_on_service_url']);
+			}
+
+			if ( isset($_POST['idp_single_logout_service_url']) ) {
+				$wp_saml_auth_settings['idp_singleLogoutService_url'] = esc_url($_POST['idp_single_logout_service_url']);
+			}
+
+			if ( isset($_POST['idp_certificate']) ) {
+				$wp_saml_auth_settings['x509cert'] = sanitize_title($_POST['idp_certificate']);
+			}
+
+			update_option('wp_saml_auth_settings', $wp_saml_auth_settings);
+
+		}
 	}
+
 
 	public static function get_field_sp_metadata()
 	{
