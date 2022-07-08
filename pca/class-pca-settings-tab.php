@@ -14,7 +14,10 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 		add_action("get_field_edit_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
 		add_action("get_field_view_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
+
+		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth"), 10, 3);
 	}
+
 
 	/**
 	 * Add tab to pca account settings
@@ -24,6 +27,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		global $pca_settings;
 		$pca_settings->account_tabs["saml"] = __("Saml", "pca");
 	}
+
 
 	/**
 	 * Add fields to tab
@@ -78,6 +82,9 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	}
 
 
+	/**
+	 * Sanitize and save pca POST to wp_saml_auth_settings
+	 */
     public static function save_tab_fields()
 	{
 		if ( isset($_POST['subtab']) && $_POST['subtab'] === "saml" ) {
@@ -101,6 +108,35 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			}
 
 			update_option('wp_saml_auth_settings', $wp_saml_auth_settings);
+
+		}
+	}
+
+
+	/**
+	 * Get values for pca saml fields from wp_saml_auth_settings
+	 */
+    public static function get_field_value_wp_saml_auth( $fieldname, $data_item, $datatype )
+	{
+		if ( $datatype === 'saml' ) {
+
+			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+
+			if ( $fieldname === 'idp_entity_id' ) {
+				return $wp_saml_auth_settings['idp_entityId'];
+			}
+
+			if ( $fieldname === 'idp_single_sign_on_service_url' ) {
+				return $wp_saml_auth_settings['idp_singleSignOnService_url'];
+			}
+
+			if ( $fieldname === 'idp_single_logout_service_url' ) {
+				return $wp_saml_auth_settings['idp_singleLogoutService_url'];
+			}
+
+			if ( $fieldname === 'idp_certificate' ) {
+				return $wp_saml_auth_settings['x509cert'];
+			}
 
 		}
 	}
