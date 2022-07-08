@@ -142,6 +142,18 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	}
 
 
+	public static function get_field_documentation()
+	{
+		$url = add_query_arg(['token' => wp_create_nonce("pca-nonce")], plugin_dir_url(__FILE__ ) . 'documentation.php?token=');
+
+		?>
+		<div class="form-control-no-input">
+			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>"><?php _e("Documentation", "pca") ?></a>
+		</div>
+		<?php
+	}
+
+
 	public static function get_field_sp_metadata()
 	{
 		$url = add_query_arg(['token' => wp_create_nonce("pca-nonce")], plugin_dir_url(__FILE__ ) . 'metadata.php?token=');
