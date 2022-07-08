@@ -9,9 +9,12 @@ require_once '../vendor/autoload.php';
 require_once 'settings.php';
 
 try {
-	$auth = new OneLogin\Saml2\Auth();
-	$settings = $auth->getSettings($settings);
-
+	error_log("SAML Metadata view");
+	error_log("SAML Metadata view: Settings 1");
+	error_log(print_r($settings, true));
+	$auth = new OneLogin\Saml2\Auth($settings);
+	$settings = $auth->getSettings();
+	error_log("SAML Metadata view: Settings 2");
 	error_log(print_r($settings, true));
 
 	$metadata = $settings->getSPMetadata();
