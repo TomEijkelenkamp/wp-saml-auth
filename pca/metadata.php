@@ -4,8 +4,8 @@
  *  SAML Metadata view
  */
 
-require_once('../../../wp-load.php');
-require_once 'vendor/autoload.php';
+require_once('../../../../wp-load.php');
+require_once '../vendor/autoload.php';
 require_once 'settings.php';
 
 try {
