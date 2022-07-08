@@ -11,9 +11,10 @@ header('Content-Type: text/html');
 ?>
 <style>
 	.container {
-		section {
-			margin: 50px;
-		}
+		margin: 50px;
+	}
+	.container section {
+		margin: 50px 0;
 	}
 </style>
 <div class="container">
