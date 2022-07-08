@@ -1,14 +1,5 @@
 <?php
 
-/**
- * Add backend settings
- */
-$options = get_option( WP_SAML_Auth_Options::get_option_name() );
-if ( ! empty( $options['x509cert'] ) ) {
-	$options['x509cert'] = str_replace( 'ABSPATH', ABSPATH, $options['x509cert'] );
-	$options['x509cert'] = file_exists( $options['x509cert'] ) ? file_get_contents( $options['x509cert'] ) : '';
-}
-
 $settings = array(
 	// If 'strict' is True, then the PHP Toolkit will reject unsigned
 	// or unencrypted messages if it expects them signed or encrypted
