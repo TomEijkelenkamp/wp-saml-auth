@@ -12,7 +12,9 @@ class WP_SAML_Auth_PCA_Settings_Tab {
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_fields'));
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'save_tab_fields'));
 
+		add_action("get_field_edit_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
 		add_action("get_field_view_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
+		add_action("get_field_edit_documentation", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_documentation"), 10, 1);
 		add_action("get_field_view_documentation", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_documentation"), 10, 1);
 
 		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth"), 10, 4);
