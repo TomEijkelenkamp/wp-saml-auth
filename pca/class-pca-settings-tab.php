@@ -149,7 +149,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		?>
 		<label><?php _e("Sp metadata", "pca") ?></label>
 		<div class="form-control-no-input">
-			<span><?php _e("metadata.xml", "pca") ?></span>
 			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>"><?php _e("Download", "pca") ?></a>
 		</div>
 		<?php
