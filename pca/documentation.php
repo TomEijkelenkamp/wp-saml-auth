@@ -29,4 +29,10 @@ header('Content-Type: text/html');
 	<h2>Step 6.</h2>
 	<p>Set access control policy to everyone</p>
 	<img src="img/docu_6_access_control.png" />
+	<h2>Step 7.</h2>
+	<p>Press next</p>
+	<img src="img/docu_7_trust_ready.png" />
+	<h2>Step 8.</h2>
+	<p>Press close</p>
+	<img src="img/docu_8_trust_finish.png" />
 </div>
