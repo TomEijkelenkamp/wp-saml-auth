@@ -15,8 +15,16 @@ try {
 	$metadata = $settings->getSPMetadata();
 	$errors = $settings->validateMetadata($metadata);
 	if (empty($errors)) {
+		header('Pragma: public');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Cache-Control: private', false); // required for certain browsers
 		header('Content-Type: text/xml');
+		header('Content-Disposition: attachment; filename="metadata.xml"');
+
 		echo $metadata;
+
+		exit;
 	} else {
 		throw new OneLogin\Saml2\Error(
 			'Invalid SP metadata: ' . implode(', ', $errors),
