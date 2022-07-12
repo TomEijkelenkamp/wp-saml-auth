@@ -82,7 +82,7 @@ header('Content-Type: text/html');
 		<h2>Step 3.2.</h2>
 		<p>Choose as the claim rule template "Send LDAP Attributes as Claims"</p>
 		<p>Press "Next"</p>
-		<img src="img/3_2_send_ldap_attributes_as_claims.png.png" />
+		<img src="img/3_2_send_ldap_attributes_as_claims.png" />
 	</section>
 	<section>
 		<h2>Step 3.3.</h2>
@@ -94,22 +94,22 @@ header('Content-Type: text/html');
 		<p>Add a new rule by pressing "Add rule..."</p>
 		<p>Choose as the claim rule template "Transform an Incoming Claim"</p>
 		<p>Press "Next"</p>
-		<img src="img/3_4_transform_an_incoming_claim.png.png" />
+		<img src="img/3_4_transform_an_incoming_claim.png" />
 	</section>
 	<section>
 		<h2>Step 3.5.</h2>
 		<p>Setup rule as you see in the picture and press Ok</p>
-		<img src="img/3_5_transform_email_to_name_id.png.png" />
+		<img src="img/3_5_transform_email_to_name_id.png" />
 	</section>
 	<section>
 		<h2>Step 3.6.</h2>
 		<p>Choose as the claim rule template "Send LDAP Attributes as Claims"</p>
 		<p>Press "Next"</p>
-		<img src="img/3_2_send_ldap_attributes_as_claims.png.png" />
+		<img src="img/3_2_send_ldap_attributes_as_claims.png" />
 	</section>
 	<section>
 		<h2>Step 3.7.</h2>
 		<p>Setup rule as you see in the picture and press Ok</p>
-		<img src="img/3_6_rule_email_as_login.png.png" />
+		<img src="img/3_6_rule_email_as_login.png" />
 	</section>
 </div>
