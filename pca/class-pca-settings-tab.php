@@ -85,7 +85,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 		$pca_settings->meta["saml"]["idp_certificate"] = array(
 			"label" => __("Idp certificate", "pca"),
-			"fieldtype" => "text",
+			"fieldtype" => "textarea",
 			"verplicht" => true,
 			"max" => 0,
 			"roles" => array(4),//4 = beheerder
