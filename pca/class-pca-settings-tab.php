@@ -115,7 +115,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			}
 
 			if ( isset($_POST['idp_certificate']) ) {
-				$wp_saml_auth_settings['x509cert'] = sanitize_title($_POST['idp_certificate']);
+				$wp_saml_auth_settings['x509cert'] = sanitize_textarea_field($_POST['idp_certificate']);
 			}
 
 			update_option('wp_saml_auth_settings', $wp_saml_auth_settings);
