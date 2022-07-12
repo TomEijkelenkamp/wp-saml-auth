@@ -86,8 +86,8 @@ header('Content-Type: text/html');
 	</section>
 	<section>
 		<h2>Step 3.3.</h2>
-		<p>Setup rule as you see in the picture and press Ok</p>
-		<img src="img/3_3_rule_email.png.png" />
+		<p>Setup rule as you see in the picture and press "Finish"</p>
+		<img src="img/3_3_rule_email.png" />
 	</section>
 	<section>
 		<h2>Step 3.4.</h2>
@@ -98,7 +98,7 @@ header('Content-Type: text/html');
 	</section>
 	<section>
 		<h2>Step 3.5.</h2>
-		<p>Setup rule as you see in the picture and press Ok</p>
+		<p>Setup rule as you see in the picture and press "Finish"</p>
 		<img src="img/3_5_transform_email_to_name_id.png" />
 	</section>
 	<section>
@@ -109,7 +109,7 @@ header('Content-Type: text/html');
 	</section>
 	<section>
 		<h2>Step 3.7.</h2>
-		<p>Setup rule as you see in the picture and press Ok</p>
+		<p>Setup rule as you see in the picture and press "Finish"</p>
 		<img src="img/3_6_rule_email_as_login.png" />
 	</section>
 </div>
