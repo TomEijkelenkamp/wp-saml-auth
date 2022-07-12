@@ -74,38 +74,42 @@ header('Content-Type: text/html');
 		<img src="img/3_0_edit_claim_issuance_policy.png" />
 	</section>
 	<section>
-		<h2>Step 10.</h2>
-		<p>Edit Claim Issuance Policy</p>
-		<img src="img/docu_9_claim_issuance.png" />
+		<h2>Step 3.1.</h2>
+		<p>Add a new rule by pressing "Add rule..."</p>
+		<img src="img/3_0_edit_claim_issuance_policy.png" />
 	</section>
 	<section>
-		<h2>Step 11.</h2>
-		<p>Set claim rule template to "Send LDAP Attributes as Claims"</p>
-		<img src="img/docu_10_add_ldap.png" />
+		<h2>Step 3.2.</h2>
+		<p>Choose as the claim rule template "Send LDAP Attributes as Claims"</p>
+		<p>Press "Next"</p>
+		<img src="img/3_2_send_ldap_attributes_as_claims.png.png" />
 	</section>
 	<section>
-		<h2>Step 12.</h2>
+		<h2>Step 3.3.</h2>
 		<p>Setup rule as you see in the picture and press Ok</p>
-		<img src="img/docu_11_rule_email.png" />
+		<img src="img/3_3_rule_email.png.png" />
 	</section>
 	<section>
-		<h2>Step 13.</h2>
-		<p>Add another rule and set the claim rule template to "Transform an Incoming Claim"</p>
-		<img src="img/docu_12_add_transform.png" />
+		<h2>Step 3.4.</h2>
+		<p>Add a new rule by pressing "Add rule..."</p>
+		<p>Choose as the claim rule template "Transform an Incoming Claim"</p>
+		<p>Press "Next"</p>
+		<img src="img/3_4_transform_an_incoming_claim.png.png" />
 	</section>
 	<section>
-		<h2>Step 14.</h2>
+		<h2>Step 3.5.</h2>
 		<p>Setup rule as you see in the picture and press Ok</p>
-		<img src="img/docu_13_transform_email.png" />
+		<img src="img/3_5_transform_email_to_name_id.png.png" />
 	</section>
 	<section>
-		<h2>Step 15.</h2>
-		<p>Add another rule and set claim rule template to "Send LDAP Attributes as Claims"</p>
-		<img src="img/docu_14_add_ldap.png" />
+		<h2>Step 3.6.</h2>
+		<p>Choose as the claim rule template "Send LDAP Attributes as Claims"</p>
+		<p>Press "Next"</p>
+		<img src="img/3_2_send_ldap_attributes_as_claims.png.png" />
 	</section>
 	<section>
-		<h2>Step 16.</h2>
+		<h2>Step 3.7.</h2>
 		<p>Setup rule as you see in the picture and press Ok</p>
-		<img src="img/docu_15_rule_login.png" />
+		<img src="img/3_6_rule_email_as_login.png.png" />
 	</section>
 </div>
