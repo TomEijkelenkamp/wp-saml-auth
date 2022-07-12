@@ -76,7 +76,7 @@ header('Content-Type: text/html');
 	<section>
 		<h2>Step 3.1.</h2>
 		<p>Add a new rule by pressing "Add rule..."</p>
-		<img src="img/3_0_edit_claim_issuance_policy.png" />
+		<img src="img/3_1_add_rule.png" />
 	</section>
 	<section>
 		<h2>Step 3.2.</h2>
