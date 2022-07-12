@@ -43,7 +43,7 @@ header('Content-Type: text/html');
 	<section>
 		<h2>Step 2.3.</h2>
 		<p>Import the metadata.xml into the party trust</p>
-		<img src="img/2_3_import_sp_metadata.png.png" />
+		<img src="img/2_3_import_sp_metadata.png" />
 	</section>
 	<section>
 		<h2>Step 2.4.</h2>
