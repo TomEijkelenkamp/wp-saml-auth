@@ -14,7 +14,7 @@ function add_sso_button()
 	}
 
 	$href = esc_url( add_query_arg( $query_args, trailingslashit(site_url()).'wp-login.php' ) );
-	$icon_src = plugin_dir_url(__FILE__) . 'pca/img/MSFT_icon.png';
+	$icon_src = plugin_dir_url(__FILE__) . 'img/MSFT_icon.png';
 
 	echo "<div id='wp-saml-auth-cta'><p><a class='button' href='$href'><img src='$icon_src' />Log in met saml</a></p></div>";
 }
