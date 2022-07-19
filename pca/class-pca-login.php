@@ -25,8 +25,7 @@ function enqueue_style_sso_button() {
 		'sso-button', // handle name
 		plugin_dir_url(__FILE__) . 'style/sso-button.css', // the URL of the stylesheet
 		array(), // an array of dependent styles
-		pca_version, // version number
-		 // CSS media type
+		pca_version.time() // version number
 	);
 	wp_enqueue_style('sso-button');
 }
