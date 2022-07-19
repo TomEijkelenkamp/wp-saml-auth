@@ -21,5 +21,12 @@ function add_sso_button()
 
 add_action('wp_enqueue_scripts', 'enqueue_style_sso_button');
 function enqueue_style_sso_button() {
-	wp_enqueue_style('sso-button', plugin_dir_url(__FILE__) . 'style/sso-button.css');
+	wp_register_style(
+		'sso-button', // handle name
+		plugin_dir_url(__FILE__) . 'style/sso-button.css', // the URL of the stylesheet
+		array(), // an array of dependent styles
+		pca_version, // version number
+		 // CSS media type
+	);
+	wp_enqueue_style('sso-button');
 }
