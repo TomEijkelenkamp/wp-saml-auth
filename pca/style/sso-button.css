@@ -7,6 +7,7 @@
   margin-bottom: 20px;
   -webkit-transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
   transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+  text-decoration: none;
 }
 #pca-sso-button img.msft-icon {
   width: 18px;
