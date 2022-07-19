@@ -26,90 +26,90 @@ header('Content-Type: text/html');
 	<section>
 		<h2>Step 1.</h2>
 		<p>Open ADFS Management</p>
-		<img src="img/1_open_adfs_management.png" />
+		<img src="img/documentation/1_open_adfs_management.png" />
 	</section>
 	<section>
 		<h2>Step 2.</h2>
 		<p>Add relying Party Trust</p>
-		<img src="img/2_0_add_relying_party_trust.png" />
+		<img src="img/documentation/2_0_add_relying_party_trust.png" />
 	</section>
 	<section>
 		<h2>Step 2.1.</h2>
 		<p>Select "Claims aware"</p>
-		<img src="img/2_1_welcome.png" />
+		<img src="img/documentation/2_1_welcome.png" />
 	</section>
 	<section>
 		<h2>Step 2.2.</h2>
 		<p>Download the service provider metadata from the privacy insights platform</p>
-		<img src="img/2_2_download_sp_metadata.png" />
+		<img src="img/documentation/2_2_download_sp_metadata.png" />
 	</section>
 	<section>
 		<h2>Step 2.3.</h2>
 		<p>Import the metadata.xml into the party trust</p>
-		<img src="img/2_3_import_sp_metadata.png" />
+		<img src="img/documentation/2_3_import_sp_metadata.png" />
 	</section>
 	<section>
 		<h2>Step 2.4.</h2>
 		<p>Name the party trust according to your avg register url, subdomain.domain.nl</p>
-		<img src="img/2_4_specify_name.png" />
+		<img src="img/documentation/2_4_specify_name.png" />
 	</section>
 	<section>
 		<h2>Step 2.5.</h2>
 		<p>Set access control policy to everyone</p>
-		<img src="img/2_5_access_control_policy.png" />
+		<img src="img/documentation/2_5_access_control_policy.png" />
 	</section>
 	<section>
 		<h2>Step 2.6.</h2>
 		<p>Press next</p>
-		<img src="img/2_6_ready.png" />
+		<img src="img/documentation/2_6_ready.png" />
 	</section>
 	<section>
 		<h2>Step 2.7.</h2>
 		<p>Press close</p>
-		<img src="img/2_7_finish.png" />
+		<img src="img/documentation/2_7_finish.png" />
 	</section>
 	<section>
 		<h2>Step 3.</h2>
 		<p>Edit Claim Issuance Policy</p>
-		<img src="img/3_0_edit_claim_issuance_policy.png" />
+		<img src="img/documentation/3_0_edit_claim_issuance_policy.png" />
 	</section>
 	<section>
 		<h2>Step 3.1.</h2>
 		<p>Add a new rule by pressing "Add rule..."</p>
-		<img src="img/3_1_add_rule.png" />
+		<img src="img/documentation/3_1_add_rule.png" />
 	</section>
 	<section>
 		<h2>Step 3.2.</h2>
 		<p>Choose as the claim rule template "Send LDAP Attributes as Claims"</p>
 		<p>Press "Next"</p>
-		<img src="img/3_2_send_ldap_attributes_as_claims.png" />
+		<img src="img/documentation/3_2_send_ldap_attributes_as_claims.png" />
 	</section>
 	<section>
 		<h2>Step 3.3.</h2>
 		<p>Setup rule as you see in the picture and press "Finish"</p>
-		<img src="img/3_3_rule_email.png" />
+		<img src="img/documentation/3_3_rule_email.png" />
 	</section>
 	<section>
 		<h2>Step 3.4.</h2>
 		<p>Add a new rule by pressing "Add rule..."</p>
 		<p>Choose as the claim rule template "Transform an Incoming Claim"</p>
 		<p>Press "Next"</p>
-		<img src="img/3_4_transform_an_incoming_claim.png" />
+		<img src="img/documentation/3_4_transform_an_incoming_claim.png" />
 	</section>
 	<section>
 		<h2>Step 3.5.</h2>
 		<p>Setup rule as you see in the picture and press "Finish"</p>
-		<img src="img/3_5_transform_email_to_name_id.png" />
+		<img src="img/documentation/3_5_transform_email_to_name_id.png" />
 	</section>
 	<section>
 		<h2>Step 3.6.</h2>
 		<p>Choose as the claim rule template "Send LDAP Attributes as Claims"</p>
 		<p>Press "Next"</p>
-		<img src="img/3_2_send_ldap_attributes_as_claims.png" />
+		<img src="img/documentation/3_2_send_ldap_attributes_as_claims.png" />
 	</section>
 	<section>
 		<h2>Step 3.7.</h2>
 		<p>Setup rule as you see in the picture and press "Finish"</p>
-		<img src="img/3_6_rule_email_as_login.png" />
+		<img src="img/documentation/3_6_rule_email_as_login.png" />
 	</section>
 </div>
