@@ -16,7 +16,7 @@ function add_sso_button()
 	$href = esc_url( add_query_arg( $query_args, trailingslashit(site_url()).'wp-login.php' ) );
 	$icon_src = plugin_dir_url(__FILE__) . 'img/MSFT_icon.png';
 
-	echo "<div id='pca-sso-button'><a class='button' href='$href'><img class='msft-icon' src='$icon_src' /><span>Log in met saml</span></a></div>";
+	echo "<a id='pca-sso-button' class='button' href='$href'><img class='msft-icon' src='$icon_src' /><span>Inloggen met Microsoft</span></a>";
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_style_sso_button');
