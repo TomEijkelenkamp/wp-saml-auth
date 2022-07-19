@@ -15,5 +15,10 @@ function add_sso_button()
 
 	$href = esc_url( add_query_arg( $query_args, trailingslashit(site_url()).'wp-login.php' ) );
 
-	echo "<div id='wp-saml-auth-cta'><p><a class='button' href='$href'>Log in met saml</a></p></div>";
+	echo "<div id='wp-saml-auth-cta'><p><a class='button' href='$href'><img src='img/MSFT_icon.png' />Log in met saml</a></p></div>";
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_style_sso_button');
+function enqueue_style_sso_button() {
+	wp_enqueue_style('sso-button-css', plugin_dir_url(__FILE__) . 'pca/style/sso-button.min.css');
 }
