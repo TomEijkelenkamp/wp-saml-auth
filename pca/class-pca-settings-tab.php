@@ -150,6 +150,8 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			}
 
 		}
+		
+		return $value;
 	}
 
 
