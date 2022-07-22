@@ -105,7 +105,8 @@ class WP_SAML_Auth {
 	public function action_init() {
 		add_action( 'login_head', array( $this, 'action_login_head' ) );
 		add_action( 'login_message', array( $this, 'action_login_message' ) );
-		add_action( 'wp_logout', array( $this, 'action_wp_logout' ) );
+		// We don't use single logout
+		// add_action( 'wp_logout', array( $this, 'action_wp_logout' ) );
 		add_filter( 'login_body_class', array( $this, 'filter_login_body_class' ) );
 		add_filter( 'authenticate', array( $this, 'filter_authenticate' ), 21, 3 ); // after wp_authenticate_username_password runs.
 		add_action( 'admin_notices', array( $this, 'action_admin_notices' ) );
