@@ -45,6 +45,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"label" => __("Documentation", "pca"),
 			"fieldtype" => "callback",
 			"callback" => "documentation",
+			"roles" => array(PCA_ADMINISTRATOR),
 		);
 
 		/**
@@ -54,6 +55,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"label" => __("Sp metadata", "pca"),
 			"fieldtype" => "callback",
 			"callback" => "sp_metadata",
+			"roles" => array(PCA_ADMINISTRATOR),
 		);
 
 		/**
@@ -64,7 +66,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"fieldtype" => "text",
 			"verplicht" => true,
 			"max" => 0,
-			"roles" => array(4),//4 = beheerder
+			"roles" => array(PCA_ADMINISTRATOR),
 		);
 
 		$pca_settings->meta["saml"]["idp_single_sign_on_service_url"] = array(
@@ -72,7 +74,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"fieldtype" => "text",
 			"verplicht" => true,
 			"max" => 0,
-			"roles" => array(4),//4 = beheerder
+			"roles" => array(PCA_ADMINISTRATOR),
 		);
 
 		$pca_settings->meta["saml"]["idp_certificate"] = array(
@@ -80,7 +82,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"fieldtype" => "textarea",
 			"verplicht" => true,
 			"max" => 0,
-			"roles" => array(4),//4 = beheerder
+			"roles" => array(PCA_ADMINISTRATOR),
 		);
 	}
 
