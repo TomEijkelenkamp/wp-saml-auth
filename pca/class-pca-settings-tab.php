@@ -75,14 +75,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"roles" => array(4),//4 = beheerder
 		);
 
-		$pca_settings->meta["saml"]["idp_single_logout_service_url"] = array(
-			"label" => __("Idp single logout service url", "pca"),
-			"fieldtype" => "text",
-			"verplicht" => true,
-			"max" => 0,
-			"roles" => array(4),//4 = beheerder
-		);
-
 		$pca_settings->meta["saml"]["idp_certificate"] = array(
 			"label" => __("Idp certificate", "pca"),
 			"fieldtype" => "textarea",
@@ -108,10 +100,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 			if ( isset($_POST['idp_single_sign_on_service_url']) ) {
 				$wp_saml_auth_settings['idp_singleSignOnService_url'] = esc_url($_POST['idp_single_sign_on_service_url']);
-			}
-
-			if ( isset($_POST['idp_single_logout_service_url']) ) {
-				$wp_saml_auth_settings['idp_singleLogoutService_url'] = esc_url($_POST['idp_single_logout_service_url']);
 			}
 
 			if ( isset($_POST['idp_certificate']) ) {
@@ -141,16 +129,12 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 				return $wp_saml_auth_settings['idp_singleSignOnService_url'];
 			}
 
-			if ( $fieldname === 'idp_single_logout_service_url' ) {
-				return $wp_saml_auth_settings['idp_singleLogoutService_url'];
-			}
-
 			if ( $fieldname === 'idp_certificate' ) {
 				return $wp_saml_auth_settings['x509cert'];
 			}
 
 		}
-		
+
 		return $value;
 	}
 
