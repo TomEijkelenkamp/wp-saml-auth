@@ -39,6 +39,14 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		global $pca_settings;
 
 		/**
+		 *  SSO Active
+		 */
+		$pca_settings->meta["saml"]["sso_active"] = array(
+			"label" => __("Active", "pca"),
+			"fieldtype" => "checkbox",
+			"roles" => array(PCA_ADMINISTRATOR),
+		);
+		/**
 		 *  Service Provider Fields
 		 */
 		$pca_settings->meta["saml"]["documentation"] = array(
@@ -94,6 +102,10 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	{
 		if ( isset($_POST['subtab']) && $_POST['subtab'] === "saml" ) {
 
+			if ( isset($_POST['sso_active']) ) {
+				return update_option('sso_active', intval($_POST['sso_active']));
+			}
+			
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
 
 			if ( isset($_POST['idp_entity_id']) ) {
@@ -120,6 +132,10 @@ class WP_SAML_Auth_PCA_Settings_Tab {
     public static function get_field_value_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
 	{
 		if ( $datatype === 'saml' ) {
+
+			if ( $fieldname === 'sso_active' ) {
+				return get_option('sso_active');
+			}
 
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
 
