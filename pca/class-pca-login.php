@@ -1,31 +1,47 @@
-<?php
+<?php defined('ABSPATH') or die("you do not have acces to this page!");
 
-add_action('pca_do_saml_form', 'add_sso_button');
-function add_sso_button()
-{
-	$query_args  = array(
-		'action' => 'wp-saml-auth',
-	);
+class WP_SAML_Auth_PCA_Login {
 
-	$redirect_to = filter_input( INPUT_GET, 'redirect_to', FILTER_SANITIZE_URL );
+	public static function initialize()
+	{
+		if ( !is_plugin_active('privacy-concepts-app/privacy-concepts-app.php') ) {
+			die("Privacy concepts app not active!");
+		}
 
-	if ( $redirect_to ) {
-		$query_args['redirect_to'] = rawurlencode( $redirect_to );
+		if ( get_option('sso_active') ) {
+			add_action('pca_do_saml_form', array('WP_SAML_Auth_PCA_Login', 'add_sso_button'));
+			add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_sso_button'));
+		}
 	}
 
-	$href = esc_url( add_query_arg( $query_args, trailingslashit(site_url()).'wp-login.php' ) );
-	$icon_src = plugin_dir_url(__FILE__) . 'img/MSFT_icon.png';
 
-	echo "<a id='pca-sso-button' class='button' href='$href'><img class='msft-icon' src='$icon_src' /><span>Log in met Microsoft</span></a>";
-}
+	function add_sso_button()
+	{
+		$query_args  = array(
+			'action' => 'wp-saml-auth',
+		);
 
-add_action('wp_enqueue_scripts', 'enqueue_style_sso_button');
-function enqueue_style_sso_button() {
-	wp_register_style(
-		'sso-button', // handle name
-		plugin_dir_url(__FILE__) . 'style/sso-button.css', // the URL of the stylesheet
-		array(), // an array of dependent styles
-		pca_version.time() // version number
-	);
-	wp_enqueue_style('sso-button');
+		$redirect_to = filter_input( INPUT_GET, 'redirect_to', FILTER_SANITIZE_URL );
+
+		if ( $redirect_to ) {
+			$query_args['redirect_to'] = rawurlencode( $redirect_to );
+		}
+
+		$href = esc_url( add_query_arg( $query_args, trailingslashit(site_url()).'wp-login.php' ) );
+		$icon_src = plugin_dir_url(__FILE__) . 'img/MSFT_icon.png';
+
+		echo "<a id='pca-sso-button' class='button' href='$href'><img class='msft-icon' src='$icon_src' /><span>Log in met Microsoft</span></a>";
+	}
+
+
+	function enqueue_style_sso_button() {
+		wp_register_style(
+			'sso-button', // handle name
+			plugin_dir_url(__FILE__) . 'style/sso-button.css', // the URL of the stylesheet
+			array(), // an array of dependent styles
+			pca_version.time() // version number
+		);
+		wp_enqueue_style('sso-button');
+	}
+
 }
