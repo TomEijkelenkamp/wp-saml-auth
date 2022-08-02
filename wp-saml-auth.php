@@ -12,6 +12,12 @@
  * @package Wp_Saml_Auth
  */
 
+global $wpdb;
+$subscription = $wpdb->get_var("select subscription from {$wpdb->base_prefix}pca_account where blog_id = " . get_current_blog_id());
+if ( $subscription !== PCA_ENTERPRISE ) {
+	return;
+}
+
 /**
  * Provides default options for WP SAML Auth.
  *
