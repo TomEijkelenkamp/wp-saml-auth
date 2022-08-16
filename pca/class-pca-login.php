@@ -15,7 +15,7 @@ class WP_SAML_Auth_PCA_Login {
 	}
 
 
-	function add_sso_button()
+	public static function add_sso_button()
 	{
 		$query_args  = array(
 			'action' => 'wp-saml-auth',
@@ -34,7 +34,7 @@ class WP_SAML_Auth_PCA_Login {
 	}
 
 
-	function enqueue_style_sso_button() {
+	public static function enqueue_style_sso_button() {
 		wp_register_style(
 			'sso-button', // handle name
 			plugin_dir_url(__FILE__) . 'style/sso-button.css', // the URL of the stylesheet
