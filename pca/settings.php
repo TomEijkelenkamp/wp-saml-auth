@@ -85,7 +85,7 @@ $settings = array(
 		// SSO endpoint info of the IdP. (Authentication Request protocol)
 		'singleSignOnService' => array(
 			// URL Target of the IdP where the SP will send the Authentication Request Message
-			'url' => $options['idp_singleLogoutService_url'],
+			'url' => $options['idp_singleSignOnService_url'],
 			// SAML protocol binding to be used when returning the <Response>
 			// message.  Onelogin Toolkit supports for this endpoint the
 			// HTTP-Redirect binding only
@@ -94,7 +94,7 @@ $settings = array(
 		// SLO endpoint info of the IdP.
 		'singleLogoutService' => array(
 			// URL Location of the IdP where the SP will send the SLO Request
-			'url' => $options['idp_singleSignOnService_url'],
+			'url' => $options['idp_singleLogoutService_url'],
 			// URL location of the IdP where the SP SLO Response will be sent (ResponseLocation)
 			// if not set, url for the SLO Request will be used
 			'responseUrl' => '',
