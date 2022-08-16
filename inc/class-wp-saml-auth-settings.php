@@ -246,16 +246,13 @@ class WP_SAML_Auth_Settings {
 			}
 
 			if ( 'x509cert' === $field['uid'] ) {
-				if ( ! empty( $value ) ) {
-					$value = str_replace( 'ABSPATH', ABSPATH, $value );
-					if ( ! file_exists( $value ) ) {
-						add_settings_error(
-							WP_SAML_Auth_Options::get_option_name(),
-							$uid,
-							// translators: Field label.
-							sprintf( __( '%s is not a valid certificate path.', 'wp-saml-auth' ), trim( $section . ' ' . $field['label'] ) )
-						);
-					}
+				if ( empty( $value ) ) {
+					add_settings_error(
+						WP_SAML_Auth_Options::get_option_name(),
+						$uid,
+						// translators: Field label.
+						sprintf( __( '%s cannot be empty.', 'wp-saml-auth' ), trim( $section . ' ' . $field['label'] ) )
+					);
 				}
 			}
 		}
