@@ -69,7 +69,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		/**
 		 *  Identity Provider Provider Fields
 		 */
-		$pca_settings->meta["saml"]["idp_entity_id"] = array(
+		$pca_settings->meta["saml"]["idp_entityId"] = array(
 			"label" => __("Idp entity id", "pca"),
 			"fieldtype" => "text",
 			"verplicht" => true,
@@ -77,7 +77,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"roles" => array(PCA_ADMINISTRATOR),
 		);
 
-		$pca_settings->meta["saml"]["idp_single_sign_on_service_url"] = array(
+		$pca_settings->meta["saml"]["idp_singleSignOnService_url"] = array(
 			"label" => __("Idp single sign on service url", "pca"),
 			"fieldtype" => "text",
 			"verplicht" => true,
@@ -85,7 +85,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"roles" => array(PCA_ADMINISTRATOR),
 		);
 
-		$pca_settings->meta["saml"]["idp_certificate"] = array(
+		$pca_settings->meta["saml"]["x509cert"] = array(
 			"label" => __("Idp certificate", "pca"),
 			"fieldtype" => "textarea",
 			"verplicht" => true,
@@ -102,26 +102,14 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	{
 		if ( isset($_POST['subtab']) && $_POST['subtab'] === "saml" ) {
 
-			if ( isset($_POST['sso_active']) ) {
-				return update_option('sso_active', sanitize_title($_POST['sso_active']));
-			}
-
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
 
-			if ( isset($_POST['idp_entity_id']) ) {
-				$wp_saml_auth_settings['idp_entityId'] = esc_url($_POST['idp_entity_id']);
-			}
-
-			if ( isset($_POST['idp_single_sign_on_service_url']) ) {
-				$wp_saml_auth_settings['idp_singleSignOnService_url'] = esc_url($_POST['idp_single_sign_on_service_url']);
-			}
-
-			if ( isset($_POST['idp_certificate']) ) {
-				$wp_saml_auth_settings['x509cert'] = sanitize_textarea_field($_POST['idp_certificate']);
-			}
+			$wp_saml_auth_settings['sso_active'] 					= isset($_POST['sso_active']) 					? sanitize_title($_POST['sso_active']) : '';
+			$wp_saml_auth_settings['idp_entityId'] 					= isset($_POST['idp_entityId']) 				? esc_url($_POST['idp_entityId']) : '';
+			$wp_saml_auth_settings['idp_singleSignOnService_url'] 	= isset($_POST['idp_singleSignOnService_url']) 	? esc_url($_POST['idp_singleSignOnService_url']) : '';
+			$wp_saml_auth_settings['x509cert'] 						= isset($_POST['x509cert']) 					? sanitize_textarea_field($_POST['x509cert']) : '';
 
 			update_option('wp_saml_auth_settings', $wp_saml_auth_settings);
-
 		}
 	}
 
@@ -132,25 +120,8 @@ class WP_SAML_Auth_PCA_Settings_Tab {
     public static function get_field_value_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
 	{
 		if ( $datatype === 'saml' ) {
-
-			if ( $fieldname === 'sso_active' ) {
-				return get_option('sso_active');
-			}
-
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
-
-			if ( $fieldname === 'idp_entity_id' ) {
-				return $wp_saml_auth_settings['idp_entityId'];
-			}
-
-			if ( $fieldname === 'idp_single_sign_on_service_url' ) {
-				return $wp_saml_auth_settings['idp_singleSignOnService_url'];
-			}
-
-			if ( $fieldname === 'idp_certificate' ) {
-				return $wp_saml_auth_settings['x509cert'];
-			}
-
+			return isset($wp_saml_auth_settings[$fieldname]) ? esc_html($wp_saml_auth_settings[$fieldname]) : '';
 		}
 
 		return $value;
