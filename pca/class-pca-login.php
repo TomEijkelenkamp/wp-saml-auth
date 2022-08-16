@@ -11,6 +11,10 @@ class WP_SAML_Auth_PCA_Login {
 		if ( WP_SAML_Auth::get_option('sso_active') ) {
 			add_action('pca_do_saml_form', array('WP_SAML_Auth_PCA_Login', 'add_sso_button'));
 			add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_sso_button'));
+
+			if ( WP_SAML_Auth::get_option('permit_wp_login') ) {
+				add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_hide_login'));
+			}
 		}
 	}
 
@@ -42,6 +46,17 @@ class WP_SAML_Auth_PCA_Login {
 			pca_version.time() // version number
 		);
 		wp_enqueue_style('sso-button');
+	}
+
+
+	public static function enqueue_style_hide_login() {
+		wp_register_style(
+			'hide-login', // handle name
+			plugin_dir_url(__FILE__) . 'style/hide-login.css', // the URL of the stylesheet
+			array(), // an array of dependent styles
+			pca_version.time() // version number
+		);
+		wp_enqueue_style('hide-login');
 	}
 
 }

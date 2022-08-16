@@ -92,6 +92,12 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"max" => 0,
 			"roles" => array(PCA_ADMINISTRATOR),
 		);
+
+		$pca_settings->meta["saml"]["permit_wp_login"] = array(
+			"label" => __("Sta wordpress login toe", "pca"),
+			"fieldtype" => "checkbox",
+			"roles" => array(PCA_ADMINISTRATOR),
+		);
 	}
 
 
@@ -108,6 +114,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			$wp_saml_auth_settings['idp_entityId'] 					= isset($_POST['idp_entityId']) 				? esc_url($_POST['idp_entityId']) : '';
 			$wp_saml_auth_settings['idp_singleSignOnService_url'] 	= isset($_POST['idp_singleSignOnService_url']) 	? esc_url($_POST['idp_singleSignOnService_url']) : '';
 			$wp_saml_auth_settings['x509cert'] 						= isset($_POST['x509cert']) 					? sanitize_textarea_field($_POST['x509cert']) : '';
+			$wp_saml_auth_settings['permit_wp_login'] 				= isset($_POST['permit_wp_login']) 				? sanitize_title($_POST['permit_wp_login']) : '';
 
 			update_option('wp_saml_auth_settings', $wp_saml_auth_settings);
 		}
