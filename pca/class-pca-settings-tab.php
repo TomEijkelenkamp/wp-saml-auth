@@ -103,9 +103,9 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		if ( isset($_POST['subtab']) && $_POST['subtab'] === "saml" ) {
 
 			if ( isset($_POST['sso_active']) ) {
-				return update_option('sso_active', intval($_POST['sso_active']));
+				return update_option('sso_active', sanitize_title($_POST['sso_active']));
 			}
-			
+
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
 
 			if ( isset($_POST['idp_entity_id']) ) {
