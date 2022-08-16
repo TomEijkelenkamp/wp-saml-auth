@@ -110,7 +110,7 @@ class WP_SAML_Auth {
 		// add_action( 'wp_logout', array( $this, 'action_wp_logout' ) );
 		add_filter( 'login_body_class', array( $this, 'filter_login_body_class' ) );
 
-		if ( get_option('sso_active') ) {
+		if ( get_option('wp_saml_auth_settings')['sso_active'] ) {
 			add_filter( 'authenticate', array( $this, 'filter_authenticate' ), 21, 3 ); // after wp_authenticate_username_password runs.
 		}
 		add_action( 'admin_notices', array( $this, 'action_admin_notices' ) );
