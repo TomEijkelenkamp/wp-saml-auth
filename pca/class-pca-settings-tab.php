@@ -124,7 +124,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	 */
 	public static function get_field_value_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
 	{
-		if ( $datatype === 'access' ) {
+		if ( $datatype === 'saml' ) {
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
 			return isset($wp_saml_auth_settings[$fieldname]) ? esc_html($wp_saml_auth_settings[$fieldname]) : '';
 		}
