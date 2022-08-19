@@ -13,7 +13,7 @@ class WP_SAML_Auth_PCA_Login {
 			add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_sso_button'));
 
 			if ( ! get_option('wp_saml_auth_settings')['permit_wp_login'] ) {
-				add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_hide_login'));
+				add_filter('login_form_defaults', array('WP_SAML_Auth_PCA_Login', 'dont_echo_login_form'), 10, 1);
 			}
 		}
 	}
@@ -49,14 +49,9 @@ class WP_SAML_Auth_PCA_Login {
 	}
 
 
-	public static function enqueue_style_hide_login() {
-		wp_register_style(
-			'hide-login', // handle name
-			plugin_dir_url(__FILE__) . 'style/hide-login.css', // the URL of the stylesheet
-			array(), // an array of dependent styles
-			pca_version.time() // version number
-		);
-		wp_enqueue_style('hide-login');
+	public static function dont_echo_login_form( $defaults ) {
+		$defaults['echo'] = false;
+		return $defaults;
 	}
 
 }
