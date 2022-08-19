@@ -8,11 +8,11 @@ class WP_SAML_Auth_PCA_Login {
 			die("Privacy concepts app not active!");
 		}
 
-		if ( WP_SAML_Auth::get_option('sso_active') ) {
+		if ( get_option('wp_saml_auth_settings')['sso_active'] ) {
 			add_action('pca_do_saml_form', array('WP_SAML_Auth_PCA_Login', 'add_sso_button'));
 			add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_sso_button'));
 
-			if ( WP_SAML_Auth::get_option('permit_wp_login') ) {
+			if ( ! get_option('wp_saml_auth_settings')['permit_wp_login'] ) {
 				add_action('wp_enqueue_scripts', array('WP_SAML_Auth_PCA_Login', 'enqueue_style_hide_login'));
 			}
 		}
