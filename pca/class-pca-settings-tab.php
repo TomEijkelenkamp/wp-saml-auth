@@ -161,9 +161,12 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	{
 		if ( isset($_POST['save-account']) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "pca-nonce") && isset($_POST["list_account_id"]) && isset($_POST["permit_wp_login"]) )
 		{
-			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			global $pca_account;
+			$blog_id = $pca_account->get_blog_id_by_account_id(intval($_POST["list_account_id"]));
+
+			$wp_saml_auth_settings = get_blog_option($blog_id, 'wp_saml_auth_settings');
 			$wp_saml_auth_settings['permit_wp_login'] = sanitize_title($_POST['permit_wp_login']);
-			update_option('wp_saml_auth_settings', $wp_saml_auth_settings);
+			update_blog_option($blog_id, 'wp_saml_auth_settings', $wp_saml_auth_settings);
 		}
 	}
 
