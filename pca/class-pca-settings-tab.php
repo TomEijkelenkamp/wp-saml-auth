@@ -8,7 +8,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
             die("Privacy concepts app not active!");
         }
 
-        add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_tab'));
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_fields'));
 		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth"), 10, 4);
 		add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'save_tab_fields'));
@@ -18,20 +17,8 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		add_action("get_field_edit_documentation", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_documentation"), 10, 1);
 		add_action("get_field_view_documentation", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_documentation"), 10, 1);
 
-		add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_fields_reseller_account'));
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'save_reseller_account_tab_fields'));
 	}
-
-
-	/**
-	 * Add tab to pca account settings
-	 */
-    public static function add_tab()
-	{
-		global $pca_settings;
-		$pca_settings->account_tabs["saml"] = __("Saml", "pca");
-	}
-
 
 	/**
 	 * Add fields to tab
@@ -41,79 +28,82 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		global $pca_settings;
 
 		/**
+		 * Add tab to pca account settings
+		 */
+		$pca_settings->account_tabs["saml"] = __("Saml", "pca");
+
+		/**
 		 *  SSO Active
 		 */
 		$pca_settings->meta["saml"]["sso_active"] = array(
-			"label" => __("Active", "pca"),
+			"label" 	=> __("Active", "pca"),
 			"fieldtype" => "checkbox",
-			"roles" => array(PCA_ADMINISTRATOR),
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 		/**
 		 *  Service Provider Fields
 		 */
 		$pca_settings->meta["saml"]["documentation"] = array(
-			"label" => __("Documentation", "pca"),
+			"label" 	=> __("Documentation", "pca"),
 			"fieldtype" => "callback",
-			"callback" => "documentation",
-			"roles" => array(PCA_ADMINISTRATOR),
+			"callback" 	=> "documentation",
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
 		/**
 		 *  Service Provider Fields
 		 */
 		$pca_settings->meta["saml"]["sp_metadata"] = array(
-			"label" => __("Sp metadata", "pca"),
+			"label" 	=> __("Sp metadata", "pca"),
 			"fieldtype" => "callback",
-			"callback" => "sp_metadata",
-			"roles" => array(PCA_ADMINISTRATOR),
+			"callback" 	=> "sp_metadata",
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
 		/**
 		 *  Identity Provider Provider Fields
 		 */
 		$pca_settings->meta["saml"]["idp_entityId"] = array(
-			"label" => __("Idp entity id", "pca"),
+			"label" 	=> __("Idp entity id", "pca"),
 			"fieldtype" => "text",
 			"verplicht" => true,
-			"max" => 0,
-			"roles" => array(PCA_ADMINISTRATOR),
+			"max" 		=> 0,
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
 		$pca_settings->meta["saml"]["idp_singleSignOnService_url"] = array(
-			"label" => __("Idp single sign on service url", "pca"),
+			"label" 	=> __("Idp single sign on service url", "pca"),
 			"fieldtype" => "text",
 			"verplicht" => true,
-			"max" => 0,
-			"roles" => array(PCA_ADMINISTRATOR),
+			"max" 		=> 0,
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
 		$pca_settings->meta["saml"]["x509cert"] = array(
-			"label" => __("Idp certificate", "pca"),
+			"label" 	=> __("Idp certificate", "pca"),
 			"fieldtype" => "textarea",
 			"verplicht" => true,
-			"max" => 0,
-			"roles" => array(PCA_ADMINISTRATOR),
+			"max" 		=> 0,
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
 		$pca_settings->meta["saml"]["permit_wp_login"] = array(
-			"label" => __("Sta wordpress login toe", "pca"),
+			"label" 	=> __("Sta wordpress login toe", "pca"),
 			"fieldtype" => "checkbox",
-			"roles" => array(PCA_ADMINISTRATOR),
+			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
-	}
 
-
-	/**
-	 * Add fields to tab
-	 */
-    public static function add_fields_reseller_account()
-	{
-		global $pca_settings;
+		$pca_settings->meta["subscription"]["saml"] = array(
+			"label"     => __("SAML koppeling", "pca"),
+			"fieldtype" => "checkbox",
+			"roles"     => array('reseller', PCA_ADMINISTRATOR),
+			"disabled"  => true,
+		);
 
 		$pca_settings->meta["access"]["permit_wp_login"] = array(
-			"label" => __("Sta wordpress login toe", "pca"),
+			"label" 	=> __("Sta wordpress login toe", "pca"),
 			"fieldtype" => "checkbox",
-			"roles" => array(PCA_ADMINISTRATOR),
+			"roles"     => array('reseller', PCA_ADMINISTRATOR),
 		);
 	}
 
