@@ -96,14 +96,14 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		$pca_settings->meta["subscription"]["saml"] = array(
 			"label"     => __("SAML koppeling", "pca"),
 			"fieldtype" => "checkbox",
-			"roles"     => array('reseller', PCA_ADMINISTRATOR),
+			"roles"     => array('reseller'),
 			"disabled"  => true,
 		);
 
 		$pca_settings->meta["access"]["permit_wp_login"] = array(
 			"label" 	=> __("Sta wordpress login toe", "pca"),
 			"fieldtype" => "checkbox",
-			"roles"     => array('reseller', PCA_ADMINISTRATOR),
+			"roles"     => array('reseller'),
 		);
 	}
 
