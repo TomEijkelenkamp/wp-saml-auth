@@ -387,7 +387,7 @@ class WP_SAML_Auth_Settings {
 			array(
 				'section'     => 'idp',
 				'uid'         => 'x509cert',
-				'label'       => __( 'x509 Cerificate', 'wp-saml-auth' ),
+				'label'       => __( 'x509 Certificate', 'wp-saml-auth' ),
 				'type'        => 'text',
 				'description' => __( 'x509 certificate, used for verifying the request.', 'wp-saml-auth' ),
 			),
