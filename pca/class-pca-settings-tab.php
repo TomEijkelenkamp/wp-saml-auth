@@ -10,7 +10,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_tab'));
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_fields'));
-		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth"), 10, 4);
+		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_account_saml_wp_saml_auth"), 10, 4);
 		add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'save_tab_fields'));
 
 		add_action("get_field_edit_sp_metadata", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_sp_metadata"), 10, 1);
@@ -19,7 +19,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		add_action("get_field_view_documentation", array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_documentation"), 10, 1);
 
 		add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'add_fields_reseller_account'));
-		add_filter('pca_field_get_value', array('WP_SAML_Auth_PCA_Settings_Tab', "get_field_value_wp_saml_auth_reseller_account"), 10, 4);
         add_action('init', array('WP_SAML_Auth_PCA_Settings_Tab', 'save_reseller_account_tab_fields'));
 	}
 
@@ -120,13 +119,23 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 
 	/**
-	 * Get values for pca saml fields from wp_saml_auth_settings
+	 * Get values for pca saml fields from wp_saml_auth_settings for account saml
 	 */
-	public static function get_field_value_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
+	public static function get_field_value_account_saml_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
 	{
 		if ( $datatype === 'saml' ) {
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
 			return isset($wp_saml_auth_settings[$fieldname]) ? esc_html($wp_saml_auth_settings[$fieldname]) : '';
+		}
+
+		if ( $datatype === 'access' && $fieldname === 'permit_wp_login') {
+			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			return isset($wp_saml_auth_settings['permit_wp_login']) ? esc_html($wp_saml_auth_settings['permit_wp_login']) : '';
+		}
+
+		if ( $datatype === 'subscription' && $fieldname === 'saml') {
+			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			return isset($wp_saml_auth_settings['sso_active']) ? esc_html($wp_saml_auth_settings['sso_active']) : '';
 		}
 
 		return $value;
@@ -152,23 +161,8 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		}
 	}
 
-
 	/**
-	 * Get values for pca saml fields from wp_saml_auth_settings for reseller->account['permit_wp_login']
-	 */
-	public static function get_field_value_wp_saml_auth_reseller_account( $value, $fieldname, $data_item, $datatype )
-	{
-		if ( $datatype === 'account' && $fieldname === 'permit_wp_login') {
-			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
-			return isset($wp_saml_auth_settings['permit_wp_login']) ? esc_html($wp_saml_auth_settings['permit_wp_login']) : '';
-		}
-
-		return $value;
-	}
-
-
-	/**
-	 * Sanitize and save pca POST to wp_saml_auth_settings for reseller->account['permit_wp_login']
+	 * Sanitize and save pca POST to wp_saml_auth_settings for reseller portal
 	 */
     public static function save_reseller_account_tab_fields()
 	{
