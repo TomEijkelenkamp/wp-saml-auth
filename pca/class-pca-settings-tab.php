@@ -104,7 +104,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"label" 	=> __("Sta wordpress login toe", "pca"),
 			"fieldtype" => "checkbox",
 			"roles"     => array('reseller'),
-			"backend_condition" => array(
+			"condition" => array(
 				"saml" => "on"
 			),
 		);
