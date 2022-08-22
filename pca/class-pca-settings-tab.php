@@ -96,7 +96,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		$pca_settings->meta["subscription"]["saml"] = array(
 			"label"     => __("SAML koppeling", "pca"),
 			"fieldtype" => "checkbox",
-			"roles"     => array('reseller'),
+			"roles"     => array('reseller', PCA_ADMINISTRATOR),
 			"disabled"  => true,
 		);
 
