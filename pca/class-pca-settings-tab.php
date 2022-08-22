@@ -110,6 +110,9 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"condition" => array(
 				"saml" => "on"
 			),
+			"backend_condition" => array(
+				"subscription" => PCA_ENTERPRISE,
+			),
 		);
 	}
 
