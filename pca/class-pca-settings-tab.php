@@ -117,17 +117,17 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	public static function get_field_value_wp_saml_auth( $value, $fieldname, $data_item, $datatype )
 	{
 		if ( $datatype === 'saml' ) {
-			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
 			return isset($wp_saml_auth_settings[$fieldname]) ? esc_html($wp_saml_auth_settings[$fieldname]) : '';
 		}
 
 		if ( $datatype === 'access' && $fieldname === 'permit_wp_login') {
-			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
 			return isset($wp_saml_auth_settings['permit_wp_login']) ? esc_html($wp_saml_auth_settings['permit_wp_login']) : '';
 		}
 
 		if ( $datatype === 'subscription' && $fieldname === 'saml') {
-			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
 			return isset($wp_saml_auth_settings['sso_active']) ? esc_html($wp_saml_auth_settings['sso_active']) : '';
 		}
 
