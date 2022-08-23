@@ -75,12 +75,6 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
-		$pca_settings->meta["saml"]["permit_wp_login"] = array(
-			"label" 	=> __("Sta wordpress login toe", "pca"),
-			"fieldtype" => "checkbox",
-			"roles" 	=> array(PCA_ADMINISTRATOR),
-		);
-
 		/**
 		 *  Service Provider Metadata
 		 */
@@ -88,6 +82,15 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"label" 	=> __("Sp metadata", "pca"),
 			"fieldtype" => "callback",
 			"callback" 	=> "sp_metadata",
+			"roles" 	=> array(PCA_ADMINISTRATOR),
+		);
+
+		/**
+		 *  Lokale login
+		 */
+		$pca_settings->meta["saml"]["permit_wp_login"] = array(
+			"label" 	=> __("Sta lokale login toe", "pca"),
+			"fieldtype" => "checkbox",
 			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
@@ -105,7 +108,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		);
 
 		$pca_settings->meta["subscription"]["permit_wp_login"] = array(
-			"label" 	=> __("Sta wordpress login toe", "pca"),
+			"label" 	=> __("Sta lokale login toe", "pca"),
 			"fieldtype" => "checkbox",
 			"roles"     => array('reseller'),
 			"condition" => array(
