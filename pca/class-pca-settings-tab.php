@@ -40,23 +40,11 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"fieldtype" => "checkbox",
 			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
-		/**
-		 *  Service Provider Fields
-		 */
+
 		$pca_settings->meta["saml"]["documentation"] = array(
 			"label" 	=> __("Documentation", "pca"),
 			"fieldtype" => "callback",
 			"callback" 	=> "documentation",
-			"roles" 	=> array(PCA_ADMINISTRATOR),
-		);
-
-		/**
-		 *  Service Provider Fields
-		 */
-		$pca_settings->meta["saml"]["sp_metadata"] = array(
-			"label" 	=> __("Sp metadata", "pca"),
-			"fieldtype" => "callback",
-			"callback" 	=> "sp_metadata",
 			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
@@ -93,6 +81,19 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			"roles" 	=> array(PCA_ADMINISTRATOR),
 		);
 
+		/**
+		 *  Service Provider Metadata
+		 */
+		$pca_settings->meta["saml"]["sp_metadata"] = array(
+			"label" 	=> __("Sp metadata", "pca"),
+			"fieldtype" => "callback",
+			"callback" 	=> "sp_metadata",
+			"roles" 	=> array(PCA_ADMINISTRATOR),
+		);
+
+		/**
+		 *  Reseller Portal Fields
+		 */
 		$pca_settings->meta["subscription"]["saml"] = array(
 			"label"     => __("SAML koppeling", "pca"),
 			"fieldtype" => "checkbox",
@@ -103,7 +104,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			),
 		);
 
-		$pca_settings->meta["access"]["permit_wp_login"] = array(
+		$pca_settings->meta["subscription"]["permit_wp_login"] = array(
 			"label" 	=> __("Sta wordpress login toe", "pca"),
 			"fieldtype" => "checkbox",
 			"roles"     => array('reseller'),
@@ -127,7 +128,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			return isset($wp_saml_auth_settings[$fieldname]) ? esc_html($wp_saml_auth_settings[$fieldname]) : '';
 		}
 
-		if ( $datatype === 'access' && $fieldname === 'permit_wp_login') {
+		if ( $datatype === 'subscription' && $fieldname === 'permit_wp_login') {
 			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
 			return isset($wp_saml_auth_settings['permit_wp_login']) ? esc_html($wp_saml_auth_settings['permit_wp_login']) : '';
 		}
