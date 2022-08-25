@@ -199,14 +199,23 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 
 	public static function get_field_sp_metadata()
 	{
+		$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+		if ( empty($wp_saml_auth_settings['idp_entityId']) || empty($wp_saml_auth_settings['idp_singleSignOnService_url']) || empty($wp_saml_auth_settings['x509cert']) ) {
+			$disabled = true;
+		}
+
 		$url = add_query_arg(['token' => wp_create_nonce("pca-nonce")], plugin_dir_url(__FILE__ ) . 'metadata.php?token=');
 
 		?>
 		<label><?php _e("Sp metadata", "pca") ?></label>
 		<div class="form-control-no-input">
-			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>"><?php _e("Download", "pca") ?></a>
+			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>" <?php echo ($disabled ? 'disabled' : '') ?>><?php _e("Download", "pca") ?></a>
 		</div>
 		<?php
+		if ( $disabled ) {
+			echo "<span>Vul de verplichte velden in</span>";
+		}
+
 	}
 
 
