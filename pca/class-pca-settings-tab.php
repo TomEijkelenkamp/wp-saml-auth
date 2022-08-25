@@ -128,16 +128,19 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	{
 		if ( $datatype === 'saml' ) {
 			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
+			$wp_saml_auth_settings = wp_parse_args($wp_saml_auth_settings, self::get_default_settings());
 			return isset($wp_saml_auth_settings[$fieldname]) ? esc_html($wp_saml_auth_settings[$fieldname]) : '';
 		}
 
 		if ( $datatype === 'subscription' && $fieldname === 'permit_wp_login') {
 			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
+			$wp_saml_auth_settings = wp_parse_args($wp_saml_auth_settings, self::get_default_settings());
 			return isset($wp_saml_auth_settings['permit_wp_login']) ? esc_html($wp_saml_auth_settings['permit_wp_login']) : '';
 		}
 
 		if ( $datatype === 'subscription' && $fieldname === 'saml') {
 			$wp_saml_auth_settings = get_blog_option($data_item->blog_id, 'wp_saml_auth_settings');
+			$wp_saml_auth_settings = wp_parse_args($wp_saml_auth_settings, self::get_default_settings());
 			return isset($wp_saml_auth_settings['sso_active']) ? esc_html($wp_saml_auth_settings['sso_active']) : '';
 		}
 
@@ -153,6 +156,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		if ( isset($_POST['subtab']) && $_POST['subtab'] === "saml" ) {
 
 			$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+			$wp_saml_auth_settings = wp_parse_args($wp_saml_auth_settings, self::get_default_settings());
 
 			$wp_saml_auth_settings['sso_active'] 					= isset($_POST['sso_active']) 					? sanitize_title($_POST['sso_active']) : '';
 			$wp_saml_auth_settings['idp_entityId'] 					= isset($_POST['idp_entityId']) 				? esc_url($_POST['idp_entityId']) : '';
@@ -203,6 +207,31 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>"><?php _e("Download", "pca") ?></a>
 		</div>
 		<?php
+	}
+
+
+	public static function get_default_settings()
+	{
+		return [
+			'auto_provision' => 1,
+			'get_user_by' => 'email',
+			'baseurl' => home_url(),
+			'sp_entityId' => 'urn:' . parse_url( home_url(), PHP_URL_HOST ),
+			'sp_assertionConsumerService_url' => home_url( '/wp-login.php' ),
+			'idp_entityId' => '',
+			'idp_singleSignOnService_url' => '',
+			'idp_singleLogoutService_url' => '',
+			'x509cert' => '',
+			'certFingerprint' => '',
+			'certFingerprintAlgorithm' => '',
+			'user_login_attribute' => 'uid',
+			'user_email_attribute' => 'email',
+			'display_name_attribute' => 'display_name',
+			'first_name_attribute' => 'first_name',
+			'last_name_attribute' => 'last_name',
+			'permit_wp_login' => 'on',
+			'sso_active' => '',
+		];
 	}
 
 }

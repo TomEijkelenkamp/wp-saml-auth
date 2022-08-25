@@ -1,6 +1,28 @@
 <?php
 
 $options = get_option('wp_saml_auth_settings');
+$options = wp_parse_args($options,
+	[
+		'auto_provision' => 1,
+		'get_user_by' => 'email',
+		'baseurl' => home_url(),
+		'sp_entityId' => 'urn:' . parse_url( home_url(), PHP_URL_HOST ),
+		'sp_assertionConsumerService_url' => home_url( '/wp-login.php' ),
+		'idp_entityId' => '',
+		'idp_singleSignOnService_url' => '',
+		'idp_singleLogoutService_url' => '',
+		'x509cert' => '',
+		'certFingerprint' => '',
+		'certFingerprintAlgorithm' => '',
+		'user_login_attribute' => 'uid',
+		'user_email_attribute' => 'email',
+		'display_name_attribute' => 'display_name',
+		'first_name_attribute' => 'first_name',
+		'last_name_attribute' => 'last_name',
+		'permit_wp_login' => 'on',
+		'sso_active' => '',
+	]
+);
 
 $settings = array(
 	// If 'strict' is True, then the PHP Toolkit will reject unsigned
