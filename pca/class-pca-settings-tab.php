@@ -200,6 +200,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 	public static function get_field_sp_metadata()
 	{
 		$wp_saml_auth_settings = get_option('wp_saml_auth_settings');
+		$disabled = false;
 		if ( empty($wp_saml_auth_settings['idp_entityId']) || empty($wp_saml_auth_settings['idp_singleSignOnService_url']) || empty($wp_saml_auth_settings['x509cert']) ) {
 			$disabled = true;
 		}
