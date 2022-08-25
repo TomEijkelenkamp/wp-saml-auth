@@ -210,7 +210,7 @@ class WP_SAML_Auth_PCA_Settings_Tab {
 		<label><?php _e("Sp metadata", "pca") ?></label>
 		<div class="form-control-no-input">
 			<a target="_blank" class="btn btn-primary" href="<?php echo $url ?>" <?php echo ($disabled ? 'disabled' : '') ?>><?php _e("Download", "pca") ?></a>
-			<?php echo ($disabled ? '<span>Vul de verplichte velden in</span>' : '') ?>
+			<?php echo ($disabled ? '<span>Vul de eerst verplichte velden in</span>' : '') ?>
 		</div>
 		<?php
 	}
